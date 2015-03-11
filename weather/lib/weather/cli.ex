@@ -1,6 +1,6 @@
 defmodule Weather.CLI do
 
-  @default_city "Guadalajara"
+  @default_city "guadalajara"
 
   def main(argv) do
     argv |> parse_args |> process
@@ -8,9 +8,9 @@ defmodule Weather.CLI do
 
   def parse_args(argv) do
     parse = OptionParser.parse(argv, switches: [ help: :boolean], aliases: [h: :help])
-
     case parse do
       { [ help: true ], _, _ } -> :help
+      { _, [ city ], _       } -> city
       _                        -> @default_city
     end
   end
@@ -25,7 +25,7 @@ defmodule Weather.CLI do
   def process(city) do
     Weather.Api.fetch(city)
     |> decode_response
-    |> print_result
+    |> print_result(city)
   end
 
   def decode_response({ :ok, body }), do: body
@@ -35,12 +35,11 @@ defmodule Weather.CLI do
     System.halt(2)
   end
 
-  def print_result(list) do
-    {"name", name} = List.keyfind(list, "name", 0)
+  def print_result(list, city) do
     {"main", main} = List.keyfind(list, "main", 0)
     {"temp", temp} = List.keyfind(main, "temp", 0)
 
-    IO.puts "#{name} - #{temp}"
+    IO.puts "#{city} - #{temp}"
   end
 
 end

@@ -23,5 +23,5 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :weather, guadalajara: "http://api.openweathermap.org/data/2.5/weather?id=4005539"
+config :weather, service: "http://api.openweathermap.org/data/2.5/weather"
 config :logger, compile_time_purge_level: :info
