@@ -23,15 +23,15 @@ defmodule Weather.Api do
     { :ok, :jsx.decode(body) }
   end
 
+  def handle_response({ :ok, %HTTPoison.Response{ status_code: status, body: body }}) do
+    Logger.error "Error #{status} returned"
+    { :error, :jsx.decode(body) }
+  end
+
   def city_not_found(city) do
     IO.puts "#{city} city not found."
     IO.puts "Try one of this: #{inspect Map.keys(@cities)}"
     System.halt(2)
-  end
-
-  def handle_response({ :ok, %HTTPoison.Response{ status_code: status, body: body }}) do
-    Logger.error "Error #{status} returned"
-    { :error, :jsx.decode(body) }
   end
 
 end
