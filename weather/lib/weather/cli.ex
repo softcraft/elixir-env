@@ -39,7 +39,7 @@ defmodule Weather.CLI do
     {"main", main} = List.keyfind(list, "main", 0)
     {"temp", temp} = List.keyfind(main, "temp", 0)
 
-    IO.puts "#{city} - #{temp}"
+    IO.puts "Temperature in #{city} is #{temp - 273.15} Celcius"
   end
 
 end
