@@ -22,3 +22,6 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :weather, guadalajara: "http://api.openweathermap.org/data/2.5/weather?id=4005539"
+config :logger, compile_time_purge_level: :info

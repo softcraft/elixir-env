@@ -4,7 +4,10 @@ defmodule Weather.Mixfile do
   def project do
     [app: :weather,
      version: "0.0.1",
+     name: "Weather",
+     source: "https://github.com/softcraft/elixir-env/weather",
      elixir: "~> 1.0",
+     escript: escript_config,
      deps: deps]
   end
 
@@ -12,7 +15,7 @@ defmodule Weather.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :httpoison, :jsx]]
   end
 
   # Dependencies can be Hex packages:
@@ -25,6 +28,15 @@ defmodule Weather.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      { :httpoison, "~> 0.4"    },
+      { :jsx,       "~> 2.0"    },
+      { :earmark,    ">= 0.0.0" },
+      { :ex_doc,    github: "elixir-lang/ex_doc" },
+    ]
+  end
+
+  defp escript_config do
+    [ main_module: Weather.CLI ]
   end
 end
