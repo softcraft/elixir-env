@@ -4,6 +4,8 @@ Example for Tools for Fullstack 2 presentation
 
 ## Install
 
+Make `mix deps.get` for installing and updating dependencies
+
 To generate the executable use `mix escript.build`
 
 ## How to run
