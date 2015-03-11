@@ -8,13 +8,13 @@ To generate the executable use `mix escript.build`
 
 ## How to run
 
-Default count
+Default city
 
-    ./weather elixir-lang elixir
+    ./weather
 
 Custom count
 
-    ./weather elixir-lang elixir 10
+    ./weather guadalajara
 
 Also you can run
 
